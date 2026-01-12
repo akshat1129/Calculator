@@ -21,7 +21,6 @@
         android:id="@+id/edtdisplay"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:text="0+1"
         android:textSize="50dp"
         android:padding="16dp"
         android:gravity="end|bottom"
