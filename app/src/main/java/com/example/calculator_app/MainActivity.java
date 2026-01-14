@@ -24,7 +24,17 @@ public class MainActivity extends AppCompatActivity {
 
     DecimalFormat df = new DecimalFormat("#.####");
 
+    boolean lastInputWasOperator = false;
 
+
+
+    private double calculate(double a, double b, char op) {
+        if (op == '+') return a + b;
+        if (op == '-') return a - b;
+        if (op == '*') return a * b;
+        if (op == '/') return b != 0 ? a / b : 0;
+        return b;
+    }
 
 
     @Override
@@ -53,71 +63,133 @@ public class MainActivity extends AppCompatActivity {
         btnClr = findViewById(R.id.btnClr);
         btnEqual = findViewById(R.id.btnEqual);
 
-        btn1.setOnClickListener(v -> display.setText(display.getText().toString() + "1"));
-        btn2.setOnClickListener(v -> display.setText(display.getText().toString() + "2"));
-        btn3.setOnClickListener(v -> display.setText(display.getText().toString() + "3"));
-        btn4.setOnClickListener(v -> display.setText(display.getText().toString() + "4"));
-        btn5.setOnClickListener(v -> display.setText(display.getText().toString() + "5"));
-        btn6.setOnClickListener(v -> display.setText(display.getText().toString() + "6"));
-        btn7.setOnClickListener(v -> display.setText(display.getText().toString() + "7"));
-        btn8.setOnClickListener(v -> display.setText(display.getText().toString() + "8"));
-        btn9.setOnClickListener(v -> display.setText(display.getText().toString() + "9"));
-        btn0.setOnClickListener(v -> display.setText(display.getText().toString() + "0"));
+        btn1.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "1");
+            lastInputWasOperator = false;
+        });
+        btn2.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "2");
+            lastInputWasOperator = false;
+        });
+        btn3.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "3");
+            lastInputWasOperator = false;
+        });
+        btn4.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "4");
+            lastInputWasOperator = false;
+        });
+        btn5.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "5");
+            lastInputWasOperator = false;
+        });
+        btn6.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "6");
+            lastInputWasOperator = false;
+        });
+        btn7.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "7");
+            lastInputWasOperator = false;
+        });
+        btn8.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "8");
+            lastInputWasOperator = false;
+        });
+        btn9.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "9");
+            lastInputWasOperator = false;
+        });
+        btn0.setOnClickListener(v -> {
+            display.setText(display.getText().toString() + "0");
+            lastInputWasOperator = false;
+        });
+
 
         btnAdd.setOnClickListener(v -> {
-            if (display.getText().toString().equals("")) {
-                return;
+            if (display.getText().toString().isEmpty()) return;
+            if (lastInputWasOperator) return;
+
+            double current = Double.parseDouble(display.getText().toString());
+
+            if (operator == ' ') {
+                firstNumber = current;
+            } else {
+                firstNumber = calculate(firstNumber, current, operator);
+                display.setText(String.valueOf(firstNumber));
             }
-            firstNumber = Double.parseDouble(display.getText().toString());
+
             operator = '+';
             display.setText("");
         });
 
+
         btnSub.setOnClickListener(v -> {
-            if (display.getText().toString().equals("")) {
-                return;
+            if (display.getText().toString().isEmpty()) return;
+            if (lastInputWasOperator) return;
+
+            double current = Double.parseDouble(display.getText().toString());
+
+            if (operator == ' ') {
+                firstNumber = current;
+            } else {
+                firstNumber = calculate(firstNumber, current, operator);
+                display.setText(String.valueOf(firstNumber));
             }
-            firstNumber = Double.parseDouble(display.getText().toString());
+
             operator = '-';
             display.setText("");
         });
 
+
         btnMul.setOnClickListener(v -> {
-            if (display.getText().toString().equals("")) {
-                return;
+            if (display.getText().toString().isEmpty()) return;
+            if (lastInputWasOperator) return;
+
+            double current = Double.parseDouble(display.getText().toString());
+
+            if (operator == ' ') {
+                firstNumber = current;
+            } else {
+                firstNumber = calculate(firstNumber, current, operator);
+                display.setText(String.valueOf(firstNumber));
             }
-            firstNumber = Double.parseDouble(display.getText().toString());
+
             operator = '*';
             display.setText("");
         });
 
+
         btnDiv.setOnClickListener(v -> {
-            if (display.getText().toString().equals("")) {
-                return;
+            if (display.getText().toString().isEmpty()) return;
+            if (lastInputWasOperator) return;
+
+            double current = Double.parseDouble(display.getText().toString());
+
+            if (operator == ' ') {
+                firstNumber = current;
+            } else {
+                firstNumber = calculate(firstNumber, current, operator);
+                display.setText(String.valueOf(firstNumber));
             }
-            firstNumber = Double.parseDouble(display.getText().toString());
+
             operator = '/';
             display.setText("");
         });
 
+
         btnEqual.setOnClickListener(v -> {
-            secondNumber = Double.parseDouble(display.getText().toString());
-            switch (operator) {
-                case '+':
-                    result = firstNumber + secondNumber;
-                    break;
-                case '-':
-                    result = firstNumber - secondNumber;
-                    break;
-                case '*':
-                    result = firstNumber * secondNumber;
-                    break;
-                case '/':
-                    result = firstNumber / secondNumber;
-                    break;
-            }
+            if (display.getText().toString().isEmpty()) return;
+
+            double current = Double.parseDouble(display.getText().toString());
+            double result = calculate(firstNumber, current, operator);
+
             display.setText(df.format(result));
+
+            firstNumber = result;
+            operator = ' ';
+            lastInputWasOperator =  false;
         });
+
 
         btnClr.setOnClickListener(v -> {
             display.setText("");
@@ -125,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
             secondNumber = 0;
             result = 0;
             operator = ' ';
+            lastInputWasOperator = false;
         });
 
 
