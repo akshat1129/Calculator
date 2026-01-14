@@ -10,6 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import java.text.DecimalFormat;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean lastInputWasOperator = false;
 
+    Button activeOperatorButton = null;
 
 
     private double calculate(double a, double b, char op) {
@@ -35,6 +39,26 @@ public class MainActivity extends AppCompatActivity {
         if (op == '/') return b != 0 ? a / b : 0;
         return b;
     }
+
+
+    private void highlightOperator(Button btn) {
+        if (activeOperatorButton != null) {
+            activeOperatorButton.setBackgroundTintList(null);
+        }
+        btn.setBackgroundTintList(
+                ColorStateList.valueOf(Color.parseColor("#FF9800"))
+        );
+        activeOperatorButton = btn;
+    }
+
+
+    private void clearOperatorHighlight() {
+        if (activeOperatorButton != null) {
+            activeOperatorButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#D9544D")));
+            activeOperatorButton = null;
+        }
+    }
+
 
 
     @Override
@@ -66,42 +90,53 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "1");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
         });
         btn2.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "2");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
         });
         btn3.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "3");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
         });
         btn4.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "4");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
         });
         btn5.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "5");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
+
         });
         btn6.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "6");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
         });
         btn7.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "7");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
         });
         btn8.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "8");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
         });
         btn9.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "9");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
         });
         btn0.setOnClickListener(v -> {
             display.setText(display.getText().toString() + "0");
             lastInputWasOperator = false;
+            clearOperatorHighlight();
         });
 
 
@@ -120,6 +155,10 @@ public class MainActivity extends AppCompatActivity {
 
             operator = '+';
             display.setText("");
+
+            lastInputWasOperator = true;
+
+            highlightOperator(btnAdd);
         });
 
 
@@ -138,6 +177,10 @@ public class MainActivity extends AppCompatActivity {
 
             operator = '-';
             display.setText("");
+
+            lastInputWasOperator = true;
+
+            highlightOperator(btnSub);
         });
 
 
@@ -156,6 +199,10 @@ public class MainActivity extends AppCompatActivity {
 
             operator = '*';
             display.setText("");
+
+            lastInputWasOperator = true;
+
+            highlightOperator(btnMul);
         });
 
 
@@ -174,6 +221,10 @@ public class MainActivity extends AppCompatActivity {
 
             operator = '/';
             display.setText("");
+
+            lastInputWasOperator = true;
+
+            highlightOperator(btnDiv);
         });
 
 
@@ -188,6 +239,8 @@ public class MainActivity extends AppCompatActivity {
             firstNumber = result;
             operator = ' ';
             lastInputWasOperator =  false;
+
+            clearOperatorHighlight();
         });
 
 
@@ -198,6 +251,8 @@ public class MainActivity extends AppCompatActivity {
             result = 0;
             operator = ' ';
             lastInputWasOperator = false;
+
+            clearOperatorHighlight();
         });
 
 
