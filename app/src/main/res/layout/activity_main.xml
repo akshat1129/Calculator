@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="Akshat's Calculator"
+        android:textColor="@color/black"
         android:gravity="center"
         android:textSize="25dp"
         />
@@ -23,6 +24,7 @@
         android:layout_height="200dp"
         android:textSize="50dp"
         android:padding="16dp"
+        android:textColor="@color/black"
         android:gravity="end|bottom"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
