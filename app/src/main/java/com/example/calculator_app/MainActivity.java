@@ -16,7 +16,7 @@ import android.graphics.Color;
 
 
 public class MainActivity extends AppCompatActivity {
-    TextView display;
+    TextView display, tvExpression;
     Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     Button btnAdd, btnSub, btnMul, btnDiv, btnClr, btnEqual;
 
@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         display = findViewById(R.id.edtdisplay);
+        tvExpression = findViewById(R.id.tvExpression);
+
 
         btn0 = findViewById(R.id.btn0);
         btn1 = findViewById(R.id.btn1);
@@ -153,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(String.valueOf(firstNumber));
             }
 
+            tvExpression.setText(df.format(firstNumber) + " + ");
             operator = '+';
             display.setText("");
 
@@ -175,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(String.valueOf(firstNumber));
             }
 
+            tvExpression.setText(df.format(firstNumber) + " - ");
             operator = '-';
             display.setText("");
 
@@ -197,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(String.valueOf(firstNumber));
             }
 
+            tvExpression.setText(df.format(firstNumber) + " × ");
             operator = '*';
             display.setText("");
 
@@ -219,6 +224,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(String.valueOf(firstNumber));
             }
 
+            tvExpression.setText(df.format(firstNumber) + " ÷ ");
             operator = '/';
             display.setText("");
 
@@ -235,6 +241,7 @@ public class MainActivity extends AppCompatActivity {
             double result = calculate(firstNumber, current, operator);
 
             display.setText(df.format(result));
+            tvExpression.setText("");
 
             firstNumber = result;
             operator = ' ';
@@ -246,6 +253,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnClr.setOnClickListener(v -> {
             display.setText("");
+            tvExpression.setText("");
             firstNumber = 0;
             secondNumber = 0;
             result = 0;
