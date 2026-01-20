@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/main"
     android:padding="8dp"
-    android:background="#FAD6A5">
+    android:background="#222021">
 
     <TextView
         android:id="@+id/edtname"
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="Akshat's Calculator"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:gravity="center"
         android:textSize="25dp"
         tools:ignore="MissingConstraints" />
@@ -22,10 +22,10 @@
     <TextView
         android:id="@+id/tvExpression"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="90dp"
         android:text=""
         android:textSize="30dp"
-        android:textColor="#AAAAAA"
+        android:textColor="@color/white"
         android:gravity="end|bottom"
         app:layout_constraintTop_toBottomOf="@id/edtname"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         android:layout_height="200dp"
         android:textSize="50dp"
         android:padding="16dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:gravity="end|bottom"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/tvExpression"
@@ -94,11 +94,12 @@
         android:text="-"
         android:textSize="28dp"
         android:layout_margin="4dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@id/btn3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnAdd"
         app:layout_constraintHorizontal_weight="1"
-        android:backgroundTint="#D9544D"/>
+        android:backgroundTint="#c7c6c1"/>
 
     <Button
         android:id="@+id/btn4"
@@ -146,11 +147,12 @@
         android:text="×"
         android:textSize="28dp"
         android:layout_margin="4dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@id/btn6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnSub"
         app:layout_constraintHorizontal_weight="1"
-        android:backgroundTint="#D9544D"/>
+        android:backgroundTint="#c7c6c1"/>
 
     <Button
         android:id="@+id/btn7"
@@ -198,11 +200,12 @@
         android:text="÷"
         android:textSize="28dp"
         android:layout_margin="4dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@id/btn9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnMul"
         app:layout_constraintHorizontal_weight="1"
-        android:backgroundTint="#D9544D"/>
+        android:backgroundTint="#c7c6c1"/>
 
     <Button
         android:id="@+id/btn0"
@@ -224,11 +227,13 @@
         android:text="C"
         android:textSize="28dp"
         android:layout_margin="4dp"
+        android:textColor="@color/black"
+
         app:layout_constraintStart_toEndOf="@id/btn0"
         app:layout_constraintEnd_toStartOf="@id/btnEqual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_weight="1"
-        android:backgroundTint="#D9544D"/>
+        android:backgroundTint="#c7c6c1"/>
 
     <Button
         android:id="@+id/btnEqual"
@@ -237,11 +242,13 @@
         android:text="="
         android:textSize="28dp"
         android:layout_margin="4dp"
+        android:textColor="@color/black"
+
         app:layout_constraintStart_toEndOf="@id/btnClr"
         app:layout_constraintEnd_toStartOf="@id/btnAdd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_weight="1"
-        android:backgroundTint="#D9544D"
+        android:backgroundTint="#c7c6c1"
         />
 
     <Button
@@ -251,10 +258,12 @@
         android:text="+"
         android:textSize="28dp"
         android:layout_margin="4dp"
+        android:textColor="@color/black"
+
         app:layout_constraintStart_toEndOf="@id/btnEqual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_weight="1"
-        android:backgroundTint="#D9544D"/>
+        android:backgroundTint="#c7c6c1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

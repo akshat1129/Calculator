@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void clearOperatorHighlight() {
         if (activeOperatorButton != null) {
-            activeOperatorButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#D9544D")));
+            activeOperatorButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#c7c6c1")));
             activeOperatorButton = null;
         }
     }
